@@ -3,7 +3,8 @@ const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,
     basePath: '/coutisse',
-    assetPrefix: '/coutisse/', // assetPrefix requires the trailing slash
+    assetPrefix: '/coutisse/',
+    // assetPrefix: '/',
     images: {
         unoptimized: true,
     },
