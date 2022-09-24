@@ -2,6 +2,8 @@
 const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,
+    basePath: '/coutisse',
+    assetPrefix: '/coutisse/', // assetPrefix requires the trailing slash
     images: {
         unoptimized: true,
     },
