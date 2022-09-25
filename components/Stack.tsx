@@ -8,9 +8,10 @@ import classNames from 'classnames';
 interface Card {
     ratio: number
     rand: number
-    src: string
+    image: string
     name: string
-    zIndex: number
+    index: number
+    oi: number
 }
 
 interface StackProps {
@@ -47,28 +48,56 @@ const Stack = ({cards, className} : StackProps) => {
         className,
     );
 
+    /* const getOpacity = (o: SpringValue<number>, item: Card) => {
+     *     return o.to((v) => {
+     *         const { length } = cards;
+     *         const { oi } = item;
+
+     *         const dist = Math.abs(length - oi)
+
+     *         if (dist > 0)  {
+     *             const vm = Math.max(0, 100 - (34 * dist)) / 100
+
+     *             return vm
+     *         }
+
+     *         return v
+     *     });
+     * } */
+
+    const getDisplay = (item: Card) => {
+        const { length } = cards;
+        const { oi } = item;
+        const dist = Math.abs(length - oi)
+
+        return dist > 3 ? 'none' : 'block'
+    }
+
     return (
         <div className={elementClass}>
             <Container>
                 {transitions(({ opacity, scale, rotate }, item) => (
                     <Card
                         aspectRatio={item.ratio}
-                        key={item.src}
+                        key={item.image}
                         style={{
+                            // opacity: getOpacity(opacity, item),
                             opacity,
                             transform: "translate3d(-50%,-50%,0px)",
                             scale,
                             rotate: rotate.to((v) => v * item.rand),
-                            zIndex: item.zIndex,
+                            index: item.index,
+                            display: getDisplay(item),
                         }}
-                        src={item.src}
+                        image={item.image}
                         name={item.name}
-                        zIndex={item.zIndex}
-                    />
+                        index={item.index}
+                    >
+                    </Card>
                 ))}
             </Container>
         </div>
     )
 }
 
-export default Stack;
+export default Stack
