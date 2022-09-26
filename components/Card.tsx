@@ -1,11 +1,11 @@
 import { a } from 'react-spring'
 
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 
 interface CardProps {
     aspectRatio?: Number
     style: any
-    image: string
+    image: StaticImageData
     alt?: string
     name: string
     index: number
@@ -22,7 +22,7 @@ const Card = ({ aspectRatio = 1.0, style, image, name, index, children }: CardPr
       style={{ aspectRatio, width, height, zIndex: index, ...style }}
     >
       <div className="relative bg-black w-full h-full">
-        <Image layout="fill" src={image} alt='' priority objectFit="cover" />
+        <Image layout="fill" src={image} alt='' priority objectFit="cover" placeholder="blur" blurDataURL={image.blurDataURL} />
       </div>
       {/* <div className="absolute bottom-0 right-0 p-4 bg-white text-black">
           {name}
