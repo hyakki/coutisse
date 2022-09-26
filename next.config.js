@@ -2,12 +2,12 @@
 const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,
-    basePath: '/coutisse',
-    assetPrefix: '/coutisse/',
+    // basePath: '/coutisse',
+    // assetPrefix: '/coutisse/',
     // assetPrefix: '/',
-    images: {
-        unoptimized: true,
-    },
+    // images: {
+    //     unoptimized: true,
+    // },
 };
 
 module.exports = nextConfig;

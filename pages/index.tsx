@@ -4,6 +4,8 @@ import Image from 'next/image';
 
 import { useState } from 'react'
 
+import bgImage from '../public/images/bg.jpg'
+
 import Stack from '@/components/Stack'
 
 interface Card {
@@ -18,10 +20,9 @@ interface Card {
   oi: number
 }
 
-const basePath = '/coutisse';
-/* const basePath = '' */
+const basePath = ''
 
-const bgImage = basePath + '/images/bg.jpg'
+/* const bgImage = basePath + '/images/bg.jpg' */
 
 const Home: NextPage = () => {
 
@@ -169,7 +170,7 @@ const Home: NextPage = () => {
         <Stack className="left-1/2" cards={fArr}></Stack>
         <div className="fixed left-1/4 w-1/2 h-full flex justify-center items-center">
           <div className="relative portrait:w-4/5 landscape:w-full aspect-square grayscale opacity-50">
-              <Image layout="fill" src={bgImage} alt="" priority objectFit="contain" />
+              <Image layout="fill" src={bgImage} alt="" priority objectFit="contain" placeholder="blur" />
           </div>
         </div>
         <div className="fixed bottom-0 left-0 w-full flex justify-between p-4">
