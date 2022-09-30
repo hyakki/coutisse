@@ -17,7 +17,8 @@ const Container = ({ className, children }: ContainerProps) => {
   return (
     <div className={elementClass}>
       <div className="absolute inset-0 flex justify-center items-center">
-        <div className="relative portrait:w-4/5 landscape:h-1/2 aspect-square">
+        {/* <div className="relative portrait:w-4/5 landscape:h-1/2 aspect-square"> */}
+        <div className="relative portrait:container-portrait-size landscape:container-landscape-size aspect-square">
           {children}
         </div>
       </div>

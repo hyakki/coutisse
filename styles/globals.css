@@ -25,3 +25,12 @@ body {
 * {
   box-sizing: border-box;
 }
+
+body {
+  @apply bg-gray-200;
+}
+
+:root {
+  --container-portrait-size: 50%;
+  --container-landscape-size: 80%;
+}

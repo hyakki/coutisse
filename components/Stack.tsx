@@ -5,13 +5,18 @@ import { useTransition } from 'react-spring';
 
 import classNames from 'classnames';
 
+import { StaticImageData } from 'next/image';
+
 interface Card {
-    ratio: number
-    rand: number
-    image: string
-    name: string
-    index: number
-    oi: number
+  width: number
+  height: number
+  ratio: number
+  rand: number
+  index: number
+  image: StaticImageData,
+  name: string
+  person: string
+  oi: number
 }
 
 interface StackProps {
@@ -48,23 +53,6 @@ const Stack = ({cards, className} : StackProps) => {
         className,
     );
 
-    /* const getOpacity = (o: SpringValue<number>, item: Card) => {
-     *     return o.to((v) => {
-     *         const { length } = cards;
-     *         const { oi } = item;
-
-     *         const dist = Math.abs(length - oi)
-
-     *         if (dist > 0)  {
-     *             const vm = Math.max(0, 100 - (34 * dist)) / 100
-
-     *             return vm
-     *         }
-
-     *         return v
-     *     });
-     * } */
-
     const getDisplay = (item: Card) => {
         const { length } = cards;
         const { oi } = item;
@@ -79,9 +67,8 @@ const Stack = ({cards, className} : StackProps) => {
                 {transitions(({ opacity, scale, rotate }, item) => (
                     <Card
                         aspectRatio={item.ratio}
-                        key={item.image}
+                        key={item.image.src}
                         style={{
-                            // opacity: getOpacity(opacity, item),
                             opacity,
                             transform: "translate3d(-50%,-50%,0px)",
                             scale,
@@ -90,10 +77,8 @@ const Stack = ({cards, className} : StackProps) => {
                             display: getDisplay(item),
                         }}
                         image={item.image}
-                        name={item.name}
                         index={item.index}
-                    >
-                    </Card>
+                    ></Card>
                 ))}
             </Container>
         </div>
